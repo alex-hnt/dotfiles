@@ -1,5 +1,5 @@
 #!/bin/bash
 
 workingDir=$(pwd)
-exec i3-sensible-terminal
-cd workingDir
+exec i3-sensible-terminal&
+cd $workingDir
