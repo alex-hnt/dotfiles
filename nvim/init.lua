@@ -20,15 +20,20 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.pumheight = 8
 
+vim.g.mapleader = ' ';
+
 vim.opt.mouse = 
-
-
 
 require('onedark').setup {
     style = 'dark'
 }
 require('onedark').load()
 
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)

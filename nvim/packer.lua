@@ -22,6 +22,12 @@ vim.cmd [[packadd packer.nvim]]
         {'hrsh7th/nvim-cmp'},     -- Required
         {'hrsh7th/cmp-nvim-lsp'}, -- Required
         {'L3MON4D3/LuaSnip'},     -- Required
-      }
+
+        -- Telescope
+        use {
+            'nvim-telescope/telescope.nvim', tag = '0.1.6',
+            requires = { {'nvim-lua/plenary.nvim'} }
+        }
     }
+}
 end)
