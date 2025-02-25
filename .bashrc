@@ -27,7 +27,9 @@ unset rc
 . ~/git-completion.bash
 . ~/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='[\u@\h \W\e[0;32m$(__git_ps1 " (%s)")\e[m]\$ '
+#fix later
+#export PS1='[\u@\h \W\e[0;32m$(__git_ps1 " (%s)")\e[m]\$ '
+export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 
 # My aliases
 alias rm="rm -i"
