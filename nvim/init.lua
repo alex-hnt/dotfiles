@@ -22,12 +22,9 @@ vim.opt.pumheight = 8
 
 vim.g.mapleader = ' ';
 
-vim.opt.mouse = 
+vim.opt.mouse = 'a'
 
-require('onedark').setup {
-    style = 'dark'
-}
-require('onedark').load()
+require("config.lazy")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -60,7 +57,23 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-local lsp = require('lsp-zero').preset({})
+local lsp = require('lsp-zero')
+
+local lspconfig_defaults = require('lspconfig').util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lspconfig_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
+})
 
 lsp.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
@@ -71,4 +84,16 @@ end)
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
-lsp.setup()
+local cmp = require('cmp')
+
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+  },
+  mapping = cmp.mapping.preset.insert({}),
+  snippet = {
+    expand = function(args)
+      vim.snippet.expand(args.body)
+    end,
+  },
+})

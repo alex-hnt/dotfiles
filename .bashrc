@@ -29,8 +29,6 @@ unset rc
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='[\u@\h \W\e[0;32m$(__git_ps1 " (%s)")\e[m]\$ '
 
-export TERMINAL="/usr/bin/alacritty"
-
 # My aliases
 alias rm="rm -i"
 alias ls="ls -F --color=auto"
