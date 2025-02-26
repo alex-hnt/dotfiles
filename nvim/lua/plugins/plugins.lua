@@ -1,4 +1,6 @@
 return {
+    {"EdenEast/nightfox.nvim"},
+    {"projekt0n/github-nvim-theme"},
     {"nvim-treesitter/nvim-treesitter"},
     {
         "VonHeikemen/lsp-zero.nvim",
